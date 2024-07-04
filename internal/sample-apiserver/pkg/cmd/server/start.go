@@ -24,11 +24,9 @@ import (
 	"github.com/spf13/cobra"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 	utilerrors "k8s.io/apimachinery/pkg/util/errors"
-	"k8s.io/apiserver/pkg/endpoints/openapi"
 	genericapiserver "k8s.io/apiserver/pkg/server"
 	genericoptions "k8s.io/apiserver/pkg/server/options"
 	utilfeature "k8s.io/apiserver/pkg/util/feature"
-	sampleopenapi "k8s.io/sample-apiserver/pkg/generated/openapi"
 	"sigs.k8s.io/apiserver-runtime/internal/sample-apiserver/pkg/apiserver"
 )
 
@@ -139,13 +137,13 @@ func (o *WardleServerOptions) Config() (*apiserver.Config, error) {
 	// change: apiserver-runtime
 	// OpenAPIConfig set through ApplyRecommendedConfigFns by calling SetOpenAPIDefinitions
 	//
-	serverConfig.OpenAPIConfig = genericapiserver.DefaultOpenAPIConfig(sampleopenapi.GetOpenAPIDefinitions, openapi.NewDefinitionNamer(apiserver.Scheme))
-	serverConfig.OpenAPIConfig.Info.Title = "Wardle"
-	serverConfig.OpenAPIConfig.Info.Version = "0.1"
+	// serverConfig.OpenAPIConfig = genericapiserver.DefaultOpenAPIConfig(sampleopenapi.GetOpenAPIDefinitions, openapi.NewDefinitionNamer(apiserver.Scheme))
+	// serverConfig.OpenAPIConfig.Info.Title = "Wardle"
+	// serverConfig.OpenAPIConfig.Info.Version = "0.1"
 
-	serverConfig.OpenAPIV3Config = genericapiserver.DefaultOpenAPIV3Config(sampleopenapi.GetOpenAPIDefinitions, openapi.NewDefinitionNamer(apiserver.Scheme))
-	serverConfig.OpenAPIV3Config.Info.Title = "Wardle"
-	serverConfig.OpenAPIV3Config.Info.Version = "0.1"
+	// serverConfig.OpenAPIV3Config = genericapiserver.DefaultOpenAPIV3Config(sampleopenapi.GetOpenAPIDefinitions, openapi.NewDefinitionNamer(apiserver.Scheme))
+	// serverConfig.OpenAPIV3Config.Info.Title = "Wardle"
+	// serverConfig.OpenAPIV3Config.Info.Version = "0.1"
 
 	if err := o.RecommendedOptions.ApplyTo(serverConfig); err != nil {
 		return nil, err

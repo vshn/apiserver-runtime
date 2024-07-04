@@ -22,7 +22,6 @@ require (
 	k8s.io/component-base v0.30.2
 	k8s.io/klog/v2 v2.120.1
 	k8s.io/kube-openapi v0.0.0-20240228011516-70dd3763d340
-	k8s.io/sample-apiserver v0.30.2
 )
 
 require (
