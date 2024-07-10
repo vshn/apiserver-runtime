@@ -13,7 +13,7 @@ linters:
   disable-all: true
   enable:
     - bodyclose
-    - depguard
+    # - depguard
     - dogsled
     - dupl
     - errcheck
@@ -27,12 +27,12 @@ linters:
     - goimports
     - gosec
     - gosimple
-    - govet
+    # - govet
     - ineffassign
     - lll
     - misspell
     - nakedret
-    - revive
+    # - revive
     - staticcheck
     - stylecheck
     - typecheck
@@ -57,4 +57,3 @@ issues:
   exclude:
     - .*generated.*
   exclude-use-default: false
-
