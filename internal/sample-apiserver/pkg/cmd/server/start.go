@@ -200,17 +200,17 @@ func (o *WardleServerOptions) Config() (*apiserver.Config, error) {
 
 	serverConfig := genericapiserver.NewRecommendedConfig(apiserver.Codecs)
 
-	// change: apiserver-runtime
-	//serverConfig.OpenAPIConfig = genericapiserver.DefaultOpenAPIConfig(sampleopenapi.GetOpenAPIDefinitions, openapi.NewDefinitionNamer(apiserver.Scheme))
-	//serverConfig.OpenAPIConfig.Info.Title = "Wardle"
-	//serverConfig.OpenAPIConfig.Info.Version = "0.1"
-	//
-	//serverConfig.OpenAPIV3Config = genericapiserver.DefaultOpenAPIV3Config(sampleopenapi.GetOpenAPIDefinitions, openapi.NewDefinitionNamer(apiserver.Scheme))
-	//serverConfig.OpenAPIV3Config.Info.Title = "Wardle"
-	//serverConfig.OpenAPIV3Config.Info.Version = "0.1"
-
 	serverConfig.FeatureGate = utilversion.DefaultComponentGlobalsRegistry.FeatureGateFor(utilversion.DefaultKubeComponent)
 	serverConfig.EffectiveVersion = utilversion.DefaultComponentGlobalsRegistry.EffectiveVersionFor(apiserver.WardleComponentName)
+	// OpenAPIConfig set through ApplyRecommendedConfigFns by calling SetOpenAPIDefinitions
+	//
+	// serverConfig.OpenAPIConfig = genericapiserver.DefaultOpenAPIConfig(sampleopenapi.GetOpenAPIDefinitions, openapi.NewDefinitionNamer(apiserver.Scheme))
+	// serverConfig.OpenAPIConfig.Info.Title = "Wardle"
+	// serverConfig.OpenAPIConfig.Info.Version = "0.1"
+
+	// serverConfig.OpenAPIV3Config = genericapiserver.DefaultOpenAPIV3Config(sampleopenapi.GetOpenAPIDefinitions, openapi.NewDefinitionNamer(apiserver.Scheme))
+	// serverConfig.OpenAPIV3Config.Info.Title = "Wardle"
+	// serverConfig.OpenAPIV3Config.Info.Version = "0.1"
 
 	if err := o.RecommendedOptions.ApplyTo(serverConfig); err != nil {
 		return nil, err
